@@ -1,0 +1,210 @@
+﻿/*CSS cho sidebar*/
+.sidebar{
+    float: left;
+    width: 200px;
+    background-color:#0973b9;
+    height: 100vh;
+}
+
+.sidebar .logo{
+    display: flex;
+    height: 50px;
+    width: 100%;
+    padding-left: 10px;
+}
+.sidebar .menu{
+    width: 100%;
+    height: calc(100% - 50px);
+}
+.logo .icon-left-header {
+    width: 25px;
+    height: 100%;
+    background-image: url('/content/img/icon-left-header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo .logo-text {
+    width: 100%;
+    height: 100%;
+    background-image: url('/content/img/logo-text.png');
+    background-repeat: no-repeat;
+    background-position-y: 12px;
+    background-position-x: center;
+}
+
+/*Menu*/
+.menu .menu-item {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    border-top: 1px solid #0a7cc9;
+    border-bottom: 1px solid #076aac;
+    line-height: 40px;
+}
+.menu .menu-item:hover{
+    background-color:#ff6a00;
+}
+.menu .menu-item-icon {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -3px;
+    margin-left: 10px;
+    
+}
+.menu .menu-item-icon1 {
+        width: 24px;
+        height: 24px;
+        align-self: center;
+        background-image: url('/content/img/iconMenu.png');
+        background-repeat: no-repeat;
+        background-position-y: -192px;
+        margin-left: 10px;
+}
+.menu .menu-item-icon2 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -377px;
+    margin-left: 10px;
+}
+.menu .menu-item-icon3 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -40px;
+    margin-left: 10px;
+}
+.menu .menu-item-icon4 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -80px;
+    margin-left: 10px;
+}
+.menu .menu-item-icon-deposit {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/icon-deposit.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-icon-cost {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/icon-cost.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-icon7 {
+    width: 25px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -118px;
+    margin-left: 7px;
+}
+
+.menu .menu-item-vector {
+    width: 21px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/vector-smart-object.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-icon9 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -157px;
+    margin-left: 8px;
+}
+.menu .menu-item-cancel-invoice {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/cancel-invoice.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-icon11 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -234px;
+    margin-left: 10px;
+}
+.menu .menu-item-icon12 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -192px;
+    margin-left: 10px;
+}
+.menu .menu-item-icon13 {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-repeat: no-repeat;
+    background-position-y: -192px;
+    margin-left: 10px;
+}
+.menu .menu-item-5food {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/5food.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-iconHelp {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconHelp.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-icon-subscriber {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/icon-subscriber.png');
+    background-repeat: no-repeat;
+    margin-left: 10px;
+}
+.menu .menu-item-list {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    background-image: url('/content/img/iconMenu.png');
+    background-position-y: -270px;
+    background-repeat: no-repeat;
+    margin-left: 72px;
+}
+.menu .menu-item-text {
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+
