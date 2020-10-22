@@ -305,8 +305,11 @@ body {
     border-left: 0px;
 }
 
-.grid-content #tbListData th, tr:nth-child(even) {
+.grid-content #tbListData thead th, tr:nth-child(even) {
     background-color: rgb(239, 239, 239);
+}
+.grid-content #tbListData tr:nth-child(even) {
+    background-color: #ffffff;
 }
 
 .grid-content tr:hover {

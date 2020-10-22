@@ -60,6 +60,7 @@ class BaseJS {
     * Author: LTPThao (25/09/2020)
     * */
     loadData() {
+        
         var self = this;
         self.getLastedEmployeeCode();
         //Lấy dữ liệu trên server thông qua lời gọi tới api sevice:
@@ -88,10 +89,10 @@ class BaseJS {
                         fieldName = fieldName.charAt(0).toLowerCase() + fieldName.slice(1);
                         var value = obj[fieldName];
 
-                        if ((fieldName == 'salary' && value != null) || value == null) {
+                        if (fieldName == 'salary' && value != null) {
                             
                             var td = $(`<td title="` + value + `" style="text-align: right;">` + commonJS.formatMoney(value) + `</td>`);
-                        } else if ((fieldName == "dateOfBirth" && value != null) || value == null) {
+                        } else if (fieldName == "dateOfBirth" && value != null) {
                             var td = $(`<td title="` + value + `"style="text-align: center;">` + commonJS.formatDate(value) + `</td>`);
                         } else if (fieldName == 'employeeId') {
                             var td = $(`<td style="display:none" title="` + value + `">` + value + `</td>`);
@@ -407,9 +408,6 @@ validateCustom() {
                     if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
                         $(input).val(commonJS.formatDateISO(objectDetail[fieldName]));
                     }
-                    else if (fieldName == "phoneNumber") {
-                        $(input).val(commonJS.formatPhone(objectDetail[fieldName]));
-                    }
                     else {
                         $(input).val(objectDetail[fieldName]);
                     }
@@ -432,32 +430,45 @@ validateCustom() {
      * */
 btnDuplicateOnClick() {
     var self = this
+    var trSelected = $('#tbListData tbody tr.row-selected');
+    
     var id = 0;
-    // Hiển thị dialog chi tiết
-    id = self.getRecordIdSelected();
-
-    debugger;
-    $.ajax({
-        url: "/api/employees/" + id,
-        method: "GET",
-        data: "",
-        dataType: "json",
-        contentType: "application/json",
-        async: false
-    }).done(function (response) {
-
-        response['employeeCode'] = self.lastedCode;
+    if (trSelected.length > 0) {
+        // Hiển thị dialog chi tiết
+        id = self.getRecordIdSelected();
         $.ajax({
-            url: "/api/employees",
-            method: "POST",
-            data: JSON.stringify(response),
-            contentType: "application/json"
-        }).done(function (response) {
-            self.loadData();
+            url: "/api/employees/" + id,
+            method: "GET",
+            data: "",
+            dataType: "json",
+            contentType: "application/json",
+            async: false
+        }).done(function (employee) {
+
+            //response['employeeCode'] = self.lastedCode;
+            self.onShowDialog();
+            var objectDetail = employee;
+            var inputs = $("input[fieldName], select[fieldName]");
+            $.each(inputs, function (index, input) {
+                var fieldName = $(input).attr('fieldName');
+                if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
+                    $(input).val(commonJS.formatDateISO(objectDetail[fieldName]));
+                }
+                else if (fieldName == "employeeCode") {
+                    $(input).val(self.getLastedEmployeeCode);
+                }
+                else {
+                    $(input).val(objectDetail[fieldName]);
+                }
+            })
+            
         }).fail(function (response) {
 
         })
-    })
+    } else {
+        alert('Vui long chon nhan vien!');
+    }
+    
 }
 
 
