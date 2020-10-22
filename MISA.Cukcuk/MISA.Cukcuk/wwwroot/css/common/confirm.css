@@ -1,0 +1,78 @@
+﻿/*Xây dựng dialog xác nhận xóa nhân viên hay không*/
+.confirm {
+    position: absolute;
+    width: 400px;
+    height: 140px;
+    background-color: #0973b9;
+    border: 1px solid #0973b9;
+    top: calc(50% - 90px);
+    left: calc(50% - 140px);
+    display: none;
+}
+/*Xây dựng header của dialog*/
+.confirm .dlgConfirm-header {
+    width: 98%;
+    height: 30px;
+    border: 0px solid #0973b9;
+    line-height: 30px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.confirm .dlgConfirm-cancel {
+    display: block;
+    width: 22px;
+    height: 22px;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.dlgConfirm-cancel .icon-dlgConfirm-cancel {
+    align-self: center;
+    background-image: url('/content/img/cancel.png');
+    background-repeat: no-repeat;
+    padding: 0px 7px 0px 5px;
+}
+
+.dlgConfirm-header .header-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/*Xây dựng phần thân của dialog*/
+.dialog .dlgConfirm-content {
+    width: 98%;
+    height: calc(100% - 34px);
+    background-color: #ffffff;
+    margin-left: 4px;
+}
+
+.dlgConfirm-content .footer {
+    display: flex;
+    margin-top: 24px;
+    margin-left: 220px;
+}
+.dlgConfirm-content .dlgConfirm-title{
+    padding: 10px 5px;
+}
+.dlgConfirm-content .footer #btnOk {
+    width: 70px;
+    text-align: center;
+    background-color: #ede6e6;
+}
+.dlgConfirm-content .footer #btnCancelEmployee {
+    width: 70px;
+    text-align: center;
+    margin-left: 10px;
+    background-color: #ede6e6;
+}
+.dlgConfirm-content .footer #btnOk:hover {
+    border-color: #0973b9;
+}
+
+.dlgConfirm-content .footer #btnCancelEmployee:hover {
+    border-color: #0973b9;
+}
+
+

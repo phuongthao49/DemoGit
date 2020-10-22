@@ -10,8 +10,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MISA.Bussiness.Interfaces;
+using MISA.Bussiness.Service;
+using MISA.DataAccess;
+using MISA.DataAccess.DatabaseAccess;
+using MISA.DataAccess.Interfaces;
+using MISA.DataAccess.Repository;
 
-namespace MISA.Cukcuk
+namespace MISA.CukCuk
 {
     public class Startup
     {
@@ -25,7 +31,19 @@ namespace MISA.Cukcuk
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            object p = services.AddControllers()/*.AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+            }); */;
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IPositionRepository, PositionRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IPositionService, PositionService>();
+            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
+            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            services.AddScoped(typeof(IDatabaseContext<>), typeof(DatabaseContext<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

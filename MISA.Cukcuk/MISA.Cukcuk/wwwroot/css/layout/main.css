@@ -1,0 +1,419 @@
+﻿/*Xây dựng css cho main*/
+body {
+    margin: 0 !important;
+    font-family: sans-serif !important;
+    font-size:13px;
+}
+/*font chữ cho toàn bộ website*/
+@font-face {
+    font-family: 'Tahoma_Bold';
+    src: url('/content/fonts/Tahoma_Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Tahoma_Regular';
+    src: url('/content/onts/Tahoma_Regular.woff') format('woff');
+}
+.main {
+    width: calc(100% - 200px);
+    height: 100vh;
+    margin-left: 200px;
+    min-width: 1024px;
+}
+
+/*header*/
+.main .header {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content:space-between;
+    background-color: #0973b9;
+}
+.header .droplist-item-left {
+    height: 100%;
+    position: absolute;
+}
+.droplist-item-left .listOption {
+    margin: 10px 10px 10px 0px;
+    width: 200px;
+    height: 30px;
+}
+.listOption select {
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+    border: 0px solid;
+    background-color: #1c2d94;
+    line-height: 30px;
+}
+.droplist-item-left .header-space {
+    width: 20px;
+    height: 100%;
+}
+
+.header .droplist-item-right{
+    height: 100%;
+    display: flex;
+}
+.droplist-item-right .select-language {
+    margin: 10px;
+    width: 196px;
+    height: 30px;
+}
+.select-language select {
+    width: 200px;
+    height: 100%;
+    color: #ffffff;
+    border: 0px solid;
+    line-height: 30px;
+    background-color: #1c2d94;
+}
+.droplist-item-right .icon-globe {
+    width: 32px;
+    height: 25px;
+    align-self: center;
+    border: 0px solid;
+    background-image: url(/content/img/globe.png);
+    background-repeat: no-repeat;
+    margin: 5px 0px 5px 5px;
+}
+
+.droplist-item-right .icon-misa {
+    width: 60px;
+    height: 100%;
+    background-image: url(/content/img/ic_support.svg);
+    border: 0px solid;
+    background-repeat: no-repeat;
+}
+
+.droplist-item-right .icon-phone {
+    height: 30px;
+    margin: 10px;
+    line-height: 30px;
+    border: 0px solid;
+    display: flex;
+}
+
+.icon-phone img {
+    width: 25px;
+    height: 25px;
+    align-self: center;
+    background-repeat: no-repeat;
+    margin-top: -7px;
+    margin-left: 5px;
+}
+
+.icon-phone select {
+    float: left;
+    margin-left: 5px;
+    margin-top: 0px;
+    background-color: #0973b9;
+    width: 170px;
+    height: 30px;
+    color: #ffffff;
+    border: 0px solid;
+}
+
+/*content*/
+.main .content {
+    padding: 10px;
+    height: calc(100vh - 70px);
+}
+
+/*Xây dựng title bar trên bảng item*/
+.content .title-bar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+}
+.title-bar .title {
+    margin-left: 5px;
+    padding-top: 8px;
+    color: #000000;
+    font-size: 26px;
+}
+.title .icon-header-context {
+    margin: 10px;
+    line-height: 36px;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    outline: none;
+    border: 0px;
+    background-image: url(/content/img/IconSprite.png);
+    background-repeat: no-repeat;
+    background-position: 0 -1248px;
+}
+
+
+/*Xây dựng bảng danh sách các item trong toolbar của bảng trong main*/
+.content .grid {
+    height: calc(100vh - 122px);
+    width: calc(100% - 2px);
+    top: 40px;
+}
+
+.grid .grid-category-item {
+    border: 1px solid #ccc6c6;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    background-color: rgb(239, 239, 239);
+}
+
+.grid-category-item button {
+    height: 100%;
+    display: flex;
+    border: 1px solid rgb(239, 239, 239);
+    line-height: 30px;
+    outline: none;
+    margin-right: 1px;
+}
+
+.icon-add {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -737px;
+    padding-right: 5px;
+}
+
+.icon-mul {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: -1px;
+    background-position-y: -1888px;
+    padding-right: 5px;
+}
+
+.icon-edit {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -1872px;
+    padding-right: 5px;
+}
+
+.icon-cancel {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: -2px;
+    background-position-y: -2681px;
+    padding-right: 5px;
+}
+.icon-loaded {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -2586px;
+    padding-right: 5px;
+}
+.icon-import {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: -1px;
+    background-position-y: -1552px;
+    padding-right: 5px;
+}
+.icon-export {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -240px;
+    padding-right: 5px;
+}
+.icon-merge {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -1616px;
+    padding-right: 5px;
+}
+.icon-help {
+    display: block;
+    background-image: url('/content/img/IconSprite.png');
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    background-repeat: no-repeat;
+    background-position-x: 0;
+    background-position-y: -1600px;
+    padding-right: 5px;
+}
+
+/*Xây dựng Table bên trong thân của phần main*/
+
+.grid .grid-content {
+    border: 1px solid #ccc6c6;
+    border-top: 0px !important;
+    border-bottom: 0px;
+    width: 100%;
+    height: calc(100% - 65px);
+    overflow: auto;
+}
+
+.grid-content table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc6c6 ;
+    border-top:none;
+    border-left: none;
+}
+.grid-content table th{
+    border: 1px solid #ccc6c6;
+    border-left: 0px;
+    border-top: 0px;
+    position: sticky;
+    top: 0;
+}
+
+.grid-content table td{
+    border: 1px solid #ccc6c6;
+    border-left: 0px;
+}
+
+.grid-content #tbListData th, tr:nth-child(even) {
+    background-color: rgb(239, 239, 239);
+}
+
+.grid-content tr:hover {
+    background-color: #94f2f2 !important;
+}
+.grid-content #tbListData td {
+    text-align: left;
+    padding-left: 3px;
+}
+
+/*paging*/
+.grid .grid-paging {
+    border: 1px solid #ccc6c6;
+    height: 34px;
+    width: 100%;
+    display: flex;
+    background-color: rgb(239, 239, 239);
+}
+
+.grid-paging button {
+    width: 40px;
+    height: 98%;
+    float: left;
+    padding-top: 8px;
+    padding-left: 10px;
+    border: none;
+    background-color: rgb(239, 239, 239);
+}
+
+    .grid-paging button .pre-set-page {
+        display: block;
+        width: 30px;
+        height: 25px;
+        background-image: url('/content/img/grid/page-first.png');
+        background-repeat: no-repeat;
+    }
+
+    .grid-paging button .pre-page {
+        display: block;
+        width: 30px;
+        height: 25px;
+        background-image: url('/content/img/grid/page-prev.png');
+        background-repeat: no-repeat;
+    }
+
+.grid div {
+    width: 58px;
+    height: 100%;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 32px;
+}
+.grid .recordNumber {
+    width: 90px;
+    height: 100%;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.grid div .page {
+    display: block;
+    width: 50px;
+    height: 27px;
+    border: 1px solid #ccc6c6;
+    margin-top: 1px;
+    text-align: center;
+}
+
+.grid-paging button .next-page {
+    display: block;
+    width: 30px;
+    height: 25px;
+    background-image: url('/content/img/grid/page-next.png');
+    background-repeat: no-repeat;
+}
+
+.grid-paging button .next-set-page {
+    display: block;
+    width: 30px;
+    height: 25px;
+    background-image: url('/content/img/grid/page-last.png');
+    background-repeat: no-repeat;
+}
+
+.grid-paging button .refresh {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url('/content/img/grid/refresh.png');
+    background-repeat: no-repeat;
+}
+
+.grid div .total-page {
+    display: block;
+    width: 50px;
+    height: 27px;
+    border: 1px solid #ccc6c6;
+    margin-top: 1px;
+    text-align: center;
+}
+
+button{
+    outline: none;
+}
+button:hover{
+    border: 1px solid #0973b9;
+}
+
+ 

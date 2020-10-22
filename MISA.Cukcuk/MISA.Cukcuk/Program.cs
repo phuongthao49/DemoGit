@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace MISA.Cukcuk
+namespace MISA.CukCuk
 {
     public class Program
     {

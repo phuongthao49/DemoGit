@@ -1,19 +1,63 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>9e4af12c-d75d-48f8-ae01-6aff44af26f2</UserSecretsId>
+    <UserSecretsId>e7eb4f75-586a-4fd3-85a8-6f4b84a6a007</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.AzureKeyVault" Version="3.1.9" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\content\icons\" />
-    <Folder Include="wwwroot\js\" />
+    <Folder Include="Api\" />
+    <Folder Include="wwwroot\content\icon\" />
     <Folder Include="wwwroot\page\report\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\content\fonts\desktop.ini" />
+    <None Include="wwwroot\content\img\ahamove\desktop.ini" />
+    <None Include="wwwroot\content\img\ahamove\icon\desktop.ini" />
+    <None Include="wwwroot\content\img\ahamove\icon\ic_GH.svg" />
+    <None Include="wwwroot\content\img\button\desktop.ini" />
+    <None Include="wwwroot\content\img\chart\desktop.ini" />
+    <None Include="wwwroot\content\img\desktop.ini" />
+    <None Include="wwwroot\content\img\form\desktop.ini" />
+    <None Include="wwwroot\content\img\grid\desktop.ini" />
+    <None Include="wwwroot\content\img\ic_support.svg" />
+    <None Include="wwwroot\content\img\loadmask\desktop.ini" />
+    <None Include="wwwroot\content\img\menu\desktop.ini" />
+    <None Include="wwwroot\content\img\SMS_Menu.svg" />
+    <None Include="wwwroot\js\base\base.js" />
+    <None Include="wwwroot\js\base\validate.js" />
+    <None Include="wwwroot\js\lib\jquery-3.5.1.min.js" />
+    <None Include="wwwroot\js\page\customer.js" />
+    <None Include="wwwroot\js\page\employee.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MISA.Bussiness\MISA.Bussiness.csproj" />
+    <ProjectReference Include="..\MISA.Common\MISA.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\ResourcesVN.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResourcesVN.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\ResourcesVN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourcesVN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 

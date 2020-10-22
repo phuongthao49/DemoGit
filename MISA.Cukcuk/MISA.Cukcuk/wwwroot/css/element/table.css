@@ -1,0 +1,6 @@
+﻿table {
+}
+
+    table tr.row-selected {
+        background-color: #c5b8a7;
+    }

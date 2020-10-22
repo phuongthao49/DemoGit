@@ -1,0 +1,18 @@
+﻿.table-content input {
+    width: 257px;
+    height: 25px;
+    border: 1px solid #ccc6c6;
+    outline: none;
+    margin-left: 10px;
+    position: relative;
+}
+/*
+    Css này dùng để: khi người dùng k nhập các trường dữ liệu bắt buộc 
+    như CustomerName hoặc CustomerCode hoặc CustomerPhoneNumber, thì border của ô text sẽ chuyển màu cảnh báo
+*/
+.require-error {
+    border: 1px solid #ff0000 !important;
+}
+
+
+
