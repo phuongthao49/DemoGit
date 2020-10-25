@@ -17,15 +17,15 @@ var validData = {
      * Author: LTPThao (01/10/2020)
      */
     validateRequired: function (input) {
-        var value = $(input).val();
+        var value = $(this).val();
         //Thực hiện kiểm tra xem dữ liệu có nhập hay không (khoảng trắng hay null)
         if (!value || !(value && value.trim())) {
-            $(input).addClass('.require-error');
-            $(input).attr('title', 'Trường này không được phép để trống!');
+            $(this).addClass('require-error');
+            $(this).attr('title', 'Trường này không được phép để trống!');
             return false;
         } else {
-            $(input).removeClass('.require-error');
-            $(input).removeAttr('title');
+            $(this).removeClass('require-error');
+            $(this).removeAttr('title');
             return true;
         }
     },
@@ -35,8 +35,9 @@ var validData = {
      * @param {object} input selector
      * Author: LTPThao (01/10/2020)
      */
-    validateEmail: function () {
-
+    validateEmail: function (email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
     }
 
 }

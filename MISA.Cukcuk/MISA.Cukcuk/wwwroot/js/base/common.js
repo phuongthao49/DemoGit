@@ -10,8 +10,7 @@ var commonJS = {
     formatMoney(money) {
         try {
             if (money != null) {
-                money = parseInt(money);
-                return money.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+                return money.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$&,');
             } else {
                 return null;
             }

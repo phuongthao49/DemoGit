@@ -8,6 +8,7 @@
     <link href="/css/layout/main.css" rel="stylesheet" />
     <link href="/css/common/dialog.css" rel="stylesheet" />
     <link href="/css/common/confirm.css" rel="stylesheet" />
+    <link href="/css/common/reminder.css" rel="stylesheet" />
     <link href="/css/element/table.css" rel="stylesheet" />
 </head>
 <body>
@@ -30,66 +31,19 @@
                 <div class="menu-item-icon2"></div>
                 <div class="menu-item-text">Mua hàng</div>
             </div>
-            <div class="menu-item">
-                <div class="menu-item-icon3"></div>
-                <div class="menu-item-text">Kho</div>
+            <div>
+                <a class="menu-item" href="employee.html" style="text-decoration: none;">
+                    <div class="menu-item-icon9"></div>
+                    <div class="menu-item-text">Danh mục</div>
+                </a>
             </div>
             <div class="menu-item">
                 <div class="menu-item-icon4"></div>
                 <div class="menu-item-text">Quỹ tiền mặt</div>
             </div>
             <div class="menu-item">
-                <div class="menu-item-icon-deposit"></div>
-                <div class="menu-item-text">Quỹ tiền gửi</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-icon-cost"></div>
-                <div class="menu-item-text">Chi phí</div>
-            </div>
-            <div class="menu-item">
                 <div class="menu-item-icon7"></div>
                 <div class="menu-item-text">Khuyến mại</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-vector"></div>
-                <div class="menu-item-text">Thực đơn</div>
-            </div>
-            <div>
-                <a class="menu-item" href="customer.html" style="text-decoration: none;">
-                    <div class="menu-item-icon9"></div>
-                    <div class="menu-item-text">Danh mục khách hàng</div>
-                </a>
-            </div>
-            <div>
-                <a class="menu-item" href="employee.html" style="text-decoration: none;">
-                    <div class="menu-item-icon9"></div>
-                    <div class="menu-item-text">Danh mục nhân viên</div>
-                </a>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-cancel-invoice"></div>
-                <div class="menu-item-text">Hủy hóa đơn</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-icon11"></div>
-                <div class="menu-item-text">Thiết lập hệ thống</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-icon12"></div>
-                <div class="menu-item-text">Ứng dụng</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-5food"></div>
-                <div class="menu-item-text">5Food</div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-iconHelp"></div>
-                <div class="menu-item-text">Trợ giúp</div>
-                <div class="menu-item-list"></div>
-            </div>
-            <div class="menu-item">
-                <div class="menu-item-icon-subscriber"></div>
-                <div class="menu-item-text">Thuê bao</div>
             </div>
         </div>
     </div>
@@ -193,7 +147,7 @@
                             <table class="table-content" cellpadding="0">
                                 <tr class="row-Info">
                                     <td class="title">Mã nhân viên <span style="color:red;">(*)</span></td>
-                                    <td><input type="text" fieldName="employeeCode" style="width: 475px;" id="txtEmployeeCode" required /></td>
+                                    <td><input type="text" fieldName="employeeCode" style="width: 475px;" id="txtEmployeeCode" /></td>
                                 </tr>
                                 <tr class="row-Info">
                                     <td class="title">Tên nhân viên <span style="color:red;">(*)</span></td>
@@ -223,9 +177,9 @@
                                 </tr>
                                 <tr class="row-Info">
                                     <td class="title" title="Số chứng minh thư nhân dân/hộ chiếu">Số CMT/HC</td>
-                                    <td><input type="number" fieldName="identityNumber" style="width: 156px;" /></td>
+                                    <td><input type="text" fieldName="identityNumber" style="width: 156px;" /></td>
                                     <td class="title-right">Ngày cấp</td>
-                                    <td><input type="date" fieldName="identityDate" style="width: 226px; height: 27px; text-align: center;" /></td>
+                                    <td><input type="date" fieldName="identityDate" style="width: 225px; height: 27px; text-align: center;" /></td>
                                 </tr>
                             </table>
                         </div>
@@ -246,7 +200,7 @@
                     </div>
                     <div class="identityPlace">
                         <div class="row-Info-title" title="Nơi cấp chứng minh thư nhân dân">Nơi cấp CMTND</div>
-                        <input class="row-Info-input" type="text" />
+                        <input class="row-Info-input" fieldName="identityPlace" type="text" />
                     </div>
                     <div class="info-Title">Thông tin công việc</div>
                     <div class="work-Info">
@@ -271,9 +225,9 @@
                             </tr>
                             <tr class="work-Info-Row">
                                 <td class="work-Info-Title">Mã số thuế cá nhân</td>
-                                <td><input type="text" /></td>
+                                <td><input type="text" fieldName="taxCode" /></td>
                                 <td class="info-title-right">Mức lương</td>
-                                <td><input type="number" fieldName="salary" style="width: 362px; text-align: right;" placeholder="(VNĐ)" /></td>
+                                <td><input type="number" fieldName="salary" style="width: 361px; text-align: right;" placeholder="(VNĐ)" /></td>
                             </tr>
                             <tr class="work-Info-Row">
                                 <td class="work-Info-Title">Ngày gia nhập</td>
@@ -303,6 +257,8 @@
         </div>
 
     </div>
+
+    <!--dialog xác nhận có muốn xóa nhân viên A không?-->
     <div class="dialogBox">
         <div class="model" id="model"></div>
         <div class="dialog">
@@ -316,6 +272,26 @@
                     <div class="footer">
                         <button id="btnOk">OK</button>
                         <button id="btnCancelEmployee">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<!--Dialog thông báo phải chọn 1 nhân viên mới được sửa hoặc nhân bản-->
+    <div class="dialogBox">
+        <div class="model" id="model"></div>
+        <div class="dialog">
+            <div class="reminder" id="dlgReminder">
+                <div class="dlgReminder-header">
+                    <div class="header-title">Message</div>
+                    <button id="btnClose" class="dlgReminder-cancel"><i class="icon-dlgReminder-cancel"></i></button>
+                </div>
+                <div class="dlgReminder-content">
+                    <div class="dlgReminder-title" id="dlgReminder-title">Hãy chọn một bản ghi!</div>
+                    <div class="footer">
+                        <button id="btnOk">Ok</button>
                     </div>
                 </div>
             </div>

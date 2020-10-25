@@ -10,11 +10,12 @@ namespace MISA.Bussiness.Interfaces
         /// Lấy danh sách thông tin bản ghi
         /// </summary>
         /// <returns></returns>
+        /// Author: LTPTHAO (25/10/2020)
         IEnumerable<T> Get();
-        T GetById(Guid employeeId);
-        int Insert(T employee);
-        int Update(Guid id, T employee);
-        int Delete(Guid employeeId); 
+        T GetById(Guid entityId);
+        int Insert(T entity);
+        int Update(T entity, Guid id);
+        int Delete(Guid entityId); 
 
 
     }

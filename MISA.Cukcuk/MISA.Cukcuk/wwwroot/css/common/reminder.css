@@ -1,0 +1,69 @@
+﻿/*Xây dựng dialog nhắc nhở phải chọn 1 nhân viên để sửa hoặc nhân bản*/
+.reminder {
+    position: absolute;
+    width: 270px;
+    height: 120px;
+    background-color: #0973b9;
+    border: 1px solid #0973b9;
+    top: calc(50% - 90px);
+    left: calc(50% - 140px);
+    display: none;
+}
+
+.reminder .dlgReminder-header {
+    width: 97%;
+    height: 30px;
+    border: 0px solid #0973b9;
+    line-height: 30px;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dlgReminder-header .header-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.dlgReminder-header .dlgReminder-cancel {
+    display: block;
+    width: 22px;
+    height: 22px;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.dlgReminder-cancel icon-dlgReminder-cancel {
+    align-self: center;
+    background-image: url('/content/img/cancel.png');
+    background-repeat: no-repeat;
+    padding: 0px 7px 0px 5px;
+}
+
+.dialog .dlgReminder-content {
+    width: 97%;
+    height: calc(100% - 34px);
+    background-color: #ffffff;
+    margin-left: 4px;
+}
+
+.dlgReminder-content .dlgReminder-title {
+    padding: 10px 5px;
+}
+
+.dlgReminder-content .footer {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.dlgReminder-content .footer #btnOk {
+    width: 50px;
+    text-align: center;
+    background-color: #ede6e6;
+    padding-left: 16px;
+}
+
+.dlgReminder-content .footer #btnOk:hover {
+    border-color: #0973b9;
+}

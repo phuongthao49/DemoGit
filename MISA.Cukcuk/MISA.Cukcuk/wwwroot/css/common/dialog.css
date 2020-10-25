@@ -22,16 +22,16 @@
     display: none;
 }
 
-/*Xây dựng header của dialog*/
-.dialog-background .dialog-header {
-    width: 98%;
-    height: 30px;
-    border: 0px solid #0973b9;
-    line-height: 30px;
-    padding-left: 12px;
-    display: flex;
-    justify-content: space-between;
-}
+    /*Xây dựng header của dialog*/
+    .dialog-background .dialog-header {
+        width: 98%;
+        height: 30px;
+        border: 0px solid #0973b9;
+        line-height: 30px;
+        padding-left: 12px;
+        display: flex;
+        justify-content: space-between;
+    }
 
 .dialog-header .dialog-cancel {
     display: block;
@@ -284,7 +284,7 @@ button {
     }
 
     .row-Info div {
-        width: 227px;
+        width: 226px;
         height: 27px;
         border: 1px solid #ccc6c6;
         margin-left: 10px;
@@ -503,7 +503,7 @@ button {
     }
 
     .work-Info-Row .workStatus {
-        width: 366px;
+        width: 365px;
         height: 27px;
         border: 1px solid #ccc6c6;
         margin-left: 10px;
@@ -532,3 +532,5 @@ button {
     .work-Info-Row .workStatus:hover {
         border-color: #0973b9;
     }
+
+

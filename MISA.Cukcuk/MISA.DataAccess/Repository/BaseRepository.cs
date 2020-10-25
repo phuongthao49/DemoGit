@@ -32,9 +32,9 @@ namespace MISA.DataAccess.Repository
             return _databaseContext.Insert(employee);
         }
 
-        public int Update(Guid id, T employee)
+        public int Update(T employee, Guid id)
         {
-            return _databaseContext.Update(id, employee);
+            return _databaseContext.Update(employee, id);
         }
     }
 }
