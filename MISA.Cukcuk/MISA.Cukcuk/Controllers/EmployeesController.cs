@@ -17,8 +17,20 @@ namespace MISA.CukCuk.Controllers
     [ApiController]
     public class EmployeesController : BaseController<Employee>
     {
+        IEmployeeService _employeeService;
         public EmployeesController(IEmployeeService employeeService) : base(employeeService)
         {
+            _employeeService = employeeService;
         }
+
+        [HttpGet("new-employee-code")]
+        public IActionResult Get()
+        {
+            var result = _employeeService.GetNewEmployeeCode();
+            if (result != null)
+                return Ok(result);
+            return NoContent();
+        }
+
     }
 }

@@ -14,7 +14,7 @@ var commonJS = {
             } else {
                 return null;
             }
-            
+
         } catch (e) {
         }
     },
@@ -64,6 +64,14 @@ var commonJS = {
 
         var today = now.getFullYear() + "-" + (month) + "-" + (day);
         return today;
+    },
+
+    showLoading() {
+        $('.loading-box').show();
+    },
+
+    hideLoading() {
+        $('.loading-box').hide();
     }
 }
 Number.prototype.formatMoney = function () {

@@ -7,7 +7,7 @@ namespace MISA.DataAccess.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T>
     {
-        IDatabaseContext<T> _databaseContext;
+        protected IDatabaseContext<T> _databaseContext;
         public BaseRepository(IDatabaseContext<T> databaseContext)
         {
             _databaseContext = databaseContext;

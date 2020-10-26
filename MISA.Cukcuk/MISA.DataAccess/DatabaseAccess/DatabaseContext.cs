@@ -194,6 +194,15 @@ namespace MISA.DataAccess.DatabaseAccess
             throw new NotImplementedException();
         }
 
+        public object ExecuteScalar(string storeName)
+        {
+            _mySqlCommand.CommandText = storeName;
+            var result = _mySqlCommand.ExecuteScalar();
+            if (result == null)
+                return string.Empty;
+            return result;
+        }
+
         #endregion "method"
 
     }

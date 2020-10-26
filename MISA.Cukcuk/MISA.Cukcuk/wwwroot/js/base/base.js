@@ -5,22 +5,30 @@
  * Author: LTPThao (26/09/2020)
  * */
 class BaseJS {
+    //#region "contructor"
     constructor(url) {
-        try {
+        this.loadData();
+        this.initEvents();
+        this.getDataPosition();
+        this.loadDataPosition();
+        this.getDataDepartment();
+        this.loadDataDepartment();
+        /*try {
             this.geturl = url;
-            this.getData();
-            this.loadData();
-            this.initEvents();
-            this.getDataPosition();
-            this.loadDataPosition();
-            this.getDataDepartment();
-            this.loadDataDepartment();
-            this.getLastedEmployeeCode();
-            this.getRecordIdSelected();
-        } catch (e) {
-            console.log(e);
-        }
+            *//*this.getData();
+    this.loadData();
+    this.initEvents();
+    this.getDataPosition();
+    this.loadDataPosition();
+    this.getDataDepartment();
+    this.loadDataDepartment();
+    this.getLastedEmployeeCode();
+    this.getRecordIdSelected();*//*
+    } catch (e) {
+        console.log(e);
+    }*/
     }
+    //#endregion "contructor"
 
     getData() {
         this.Data = [];
@@ -34,186 +42,80 @@ class BaseJS {
     initEvents() {
         var self = this;
         //gắn sự kiện
-        $('#btnAdd').click(function () {
-            self.FormMode = 'Add';
-            self.onShowDialog();
-            self.getLastedEmployeeCode();
-        })
+        $('#btnAdd').click(self.btnAddOnClick.bind(self));
         $('#btnCancelDialog').click(this.onHideDialog.bind(this));
         $('#btnClose').click(this.onHideDialog.bind(this));
         $('#dlgReminder #btnClose').click(this.onHideDialog.bind(this));
         $('.dlgConfirm-header #btnClose').click(this.onHideDialog.bind(this));
         $('#btnCancelEmployee').click(this.onHideDialog.bind(this));
-        $('#btnAddEmployee').click(this.btnSaveOnClick.bind(this));
+        $('#btnSave').click(this.btnSaveOnClick.bind(this));
+        $('#btnSaveAndAdd').click(this.btnSaveAndAdd.bind(this));
         $('#btnLoadData').click(this.btnReLoadOnClick.bind(this));
         $('table#tbListData').on('click', 'tr', this.rowOnClick);
-        $("input[required]").blur(validData.validateRequired); 
+        $("input[required]").blur(validData.validateRequired);
         $('#btnDelete').click(this.btnDeleteOnClick.bind(this));
         $('#dlgConfirm #btnOk').click(this.btnOkOnClick.bind(this));
         $('#dlgReminder #btnOk').click(this.onHideDialog.bind(this));
         $('#btnEdit').click(this.btnEditOnClick.bind(this));
         $('#btnDuplicate').click(this.btnDuplicateOnClick.bind(this));
+        $('#btnNext').click(this.btnNextOnClick.bind(this));
     }
     //#endregion "initEvents"
 
-    
-     //#region "loadData"
+
+
+
+    //#region "loadData"
     /**
     * Load dữ liệu
     * Author: LTPThao (25/09/2020)
     * */
     loadData() {
-        
-        var self = this;
-        self.getLastedEmployeeCode();
-        //Lấy dữ liệu trên server thông qua lời gọi tới api sevice:
-        $.ajax({
-            url: "/api/employees",
-            method: "GET",
-            data: "", //Tham so se truyen qua body request
-            contentType: "application/json",
-            dataType: "json"
-        }).done(function (response) {
 
-            //Lấy dữ liệu: tên tuổi convention với mảng đặt tên đối tượng có chữ 's', 'es' ở cuối, sd tiếng anh
-            try {
-                $('.grid-content tbody').empty();
-                //đọc thông tin các cột dữ liệu
-                var fields = $('table#tbListData thead th');
-                var keyId = $('table#tbListData').attr('keyid');
-                //Lấy dữ liệu
-                var data = this.Data;
-                $.each(response, function (index, obj) {
+    }
 
-                    var tr = $(`<tr></tr>`);
-                    $.each(fields, function (index, field) {
-                        /*debugger;*/
-                        var fieldName = $(field).attr('fieldName');
-                        fieldName = fieldName.charAt(0).toLowerCase() + fieldName.slice(1);
-                        var value = obj[fieldName];
 
-                        if (fieldName == 'salary' && value != null) {
-                            
-                            var td = $(`<td title="` + value + `" style="text-align: right; padding-right: 6px;">` + commonJS.formatMoney(value) + `</td>`);
-                        } else if (fieldName == "dateOfBirth" && value != null) {
-                            var td = $(`<td title="` + value + `"style="text-align: center;">` + commonJS.formatDate(value) + `</td>`);
-                        } else if (fieldName == 'employeeId') {
-                            var td = $(`<td style="display:none" title="` + value + `">` + value + `</td>`);
-                        } else{
-                            var td = $(`<td title="` + value + `">` + value + `</td>`);
-                        }
-                        $(tr).data('keyid', obj[keyId]);
-                        $(tr).data('data', obj);
-                        $(tr).append(td);
-                    })
-                    //Binding dữ liệu lên UI:
-                    //var trHTML = self.makeTrHTML(obj);
-                    $('#tbListData tbody').append(tr);
-                })
-            } catch (e) {
+    btnAddOnClick() {
+    }
 
-            }
-        }).fail(function (response) {
-        })
+    btnSaveAndAdd() {
+       
     }
     //#endregion "loadData"
 
-     //#region "btnSaveOnClick - Save data"
-/**-----------------------------------------------------------------------
-     * Thực hiện lưu dữ liệu
-     * Author: LTPThao (01/10/2020)
-     * */
-btnSaveOnClick() {
-    var self = this;
-    var isValid = true;
-    //validate dữ liệu
-    // - Check bắt buộc nhập
-    var inputRequireds = $('input[required]');
-    $.each(inputRequireds, function (index, input) {
-        var valid = $(input).trigger("blur");
-        if (isValid && valid.hasClass("require-error")) {
-            isValid = false;
-            var str = "Các trường có dấu (*) không được để trống!";
-        }
-    })
-    if (isValid) {
-        isValid = self.validateCustom();
-    }
-    if (isValid) {
-        //Build object cần lưu
-
-        var inputs = $('input[fieldName], select[fieldName]');
-        var employee = {};
-        $.each(inputs, function (index, input) {
-            var fieldName = $(input).attr('fieldName');
-            var value = $(input).val();
-            employee[fieldName] = value;
-            if (fieldName == "salary" || fieldName == "gender" || fieldName == "workStatus") {
-                employee[fieldName] = parseFloat(value);
-            }
-            if (fieldName == "email") {
-                if (!employee[fieldName] == validData.validateEmail(value))
-                    return false;
-                else
-                    return true;
-            }
-
-        })
-
-
-        //Gọi service thực hiện lưu dữ liệu
-        //Check nut cat, neu == add thi them du lieu con == edit thi sua du lieu
-        if (self.FormMode == 'Add') {
-            //Lấy dữ liệu trên server thông qua lời gọi tới api sevice:
-            $.ajax({
-                url: "/api/employees",
-                method: "POST",
-                data: JSON.stringify(employee), //Tham so se truyen qua body request
-                contentType: "application/json",
-                dataType: "json"
-            }).done(function (response) {
-                self.onHideDialog();
-                self.loadData();
-            }).fail(function (response) {
-
-            })
-        } else {
-            var id = self.getRecordIdSelected();
-            //Lấy dữ liệu trên server thông qua lời gọi tới api sevice:
-            $.ajax({
-                url: "/api/employees/" + id,
-                method: "PUT",
-                data: JSON.stringify(employee),
-                contentType: "application/json"
-            }).done(function (response) {
-                self.loadData();
-            }).fail(function (response) {
-
-            })
-        }
-        //Xử lý sau khi lưu dữ liệu
-        self.onHideDialog();
-        self.loadData();
-
+    //#region "btnSaveOnClick - Save data"
+    /**-----------------------------------------------------------------------
+         * Thực hiện lưu dữ liệu
+         * Author: LTPThao (01/10/2020)
+         * */
+    btnSaveOnClick() {
+        this.saveData();
     }
 
-}
-validateCustom() {
-    return true;
-}
-//#endregion "btnSaveOnClick - Save data"
+    /**-----------------------------------------------------------------------
+        * Thực hiện lưu dữ liệu
+        * Author: LTPThao (01/10/2020)
+        * */
+    saveData() {
 
-     //#region "ReloadData"
+    }
+    validateCustom() {
+        return true;
+    }
+    //#endregion "btnSaveOnClick - Save data"
+
+    //#region "ReloadData"
     /**
      * Hàm load lại dữ liệu
      * Author: LTPThao (25/05/2020)
      * */
-    btnReLoadOnClick() {
-        this.loadData();
-}
-//#endregion "ReloadData"
+     btnReLoadOnClick() {
+         this.loadData();
+    }
 
-     //#region "ShowDialog, HideDialog"
+    //#endregion "ReloadData"
+
+    //#region "ShowDialog, HideDialog"
     /**---------------------------------------------------------------------
      * Hiển thị Dialog: Thêm một 1 employee
      * Author: LTPThao(25/5/2020)
@@ -253,11 +155,11 @@ validateCustom() {
         $('#dlgDetail').hide();
         $('#dlgConfirm').hide();
         $('#dlgReminder').hide();
-}
-//#endregion "ShowDialog, HideDialog"
+    }
+    //#endregion "ShowDialog, HideDialog"
 
-    
-    
+
+
 
     //#region "rowOnClick"
     /**
@@ -301,7 +203,7 @@ validateCustom() {
             })
         } catch (e) {
         }
-}
+    }
 
     //#endregion "get-load: DataPosition"
 
@@ -333,10 +235,10 @@ validateCustom() {
             })
         } catch (e) {
         }
-}
+    }
     //#endregion "get-load: DataDepartment"
-        
 
+    //#region "getRecordIdSelected"
     getRecordIdSelected() {
         var id = null;
         // Lấy thông tin bản ghi đã chọn trong danh sách:
@@ -347,6 +249,7 @@ validateCustom() {
         }
         return id;
     }
+    //#endregion "getRecordIdSelected"
 
     //#region "DeleteEmployee"
     /**
@@ -359,14 +262,14 @@ validateCustom() {
         var id = this.getRecordIdSelected();
         var recordSelected = $('#tbListData tbody tr.row-selected');
         $('#dlgConfirm-title').text("Bạn có chắc muốn xóa nhân viên " + $('.row-selected td:nth-child(2)').text() + " không?");
-        
+
         if (!id) {
             this.onHideDialog();
             this.onShowDialogReminder();
         } else {
             this.onShowDialogConfirm();
         }
-}
+    }
     /**
      * Sự kiện khi click vào button OK của dialog xác nhận xóa 1 nhân viên
      * Created by: LTPThao (21/10/2020)
@@ -393,9 +296,9 @@ validateCustom() {
             var noti = "Vui lòng kiểm tra lại!";
         })
 
-}
+    }
 
-//#endregion "DeleteEmployee"
+    //#endregion "DeleteEmployee"
 
     //#region "UpdateEmployee"
     /**
@@ -403,48 +306,7 @@ validateCustom() {
      * Created by: LTPThao (21/20/2020)
      */
     btnEditOnClick() {
-        var self = this;
-        self.onShowDialog();
-        // Lấy thông tin bản ghi đã chọn trong danh sách:
-        var recordSelected = $('#tbListData tbody tr.row-selected');
-        if (recordSelected.length > 0) {
-            try {
-                this.FormMode = 'Edit';
 
-                //var recordSelected = $('#tbListData tbody tr.row-selected');
-                var id = this.getRecordIdSelected();
-                $.ajax({
-                    url: "/api/employees/" + id,
-                    method: "GET",
-                    data: "",
-                    dataType: "json",
-                    contentType: "application/json",
-                    async: false
-                }).done(function (employee) {
-                    var objectDetail = employee;
-                    var inputs = $("input[fieldName], select[fieldName]");
-                    $.each(inputs, function (index, input) {
-                        var fieldName = $(input).attr('fieldName');
-                        if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
-                            $(input).val(commonJS.formatDateISO(objectDetail[fieldName]));
-                        }
-                        else {
-                            $(input).val(objectDetail[fieldName]);
-                        }
-                    })
-                }).fail(function (response) {
-
-                })
-
-
-            } catch (e) {
-
-            }
-        }
-        else {
-            this.onHideDialog();
-            this.onShowDialogReminder();
-        }
     }
     //#endregion "UpdateEmployee"
 
@@ -453,78 +315,62 @@ validateCustom() {
      * Sự kiện nhân bản nhân viên
      * Created by: LTPThao (21/10/2020)
      * */
-btnDuplicateOnClick() {
-    var self = this;
-    var trSelected = $('#tbListData tbody tr.row-selected');
-    
-    var id = 0;
-    if (trSelected.length > 0) {
-        // Hiển thị dialog chi tiết
-        id = self.getRecordIdSelected();
-        $.ajax({
-            url: "/api/employees/" + id,
-            method: "GET",
-            data: "",
-            dataType: "json",
-            contentType: "application/json",
-            async: false
-        }).done(function (employee) {
-
-            //response['employeeCode'] = self.lastedCode;
-            self.onShowDialog();
-            var objectDetail = employee;
-            var inputs = $("input[fieldName], select[fieldName]");
-            $.each(inputs, function (index, input) {
-                var fieldName = $(input).attr('fieldName');
-                if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
-                    $(input).val(commonJS.formatDateISO(objectDetail[fieldName]));
-                }
-                else if (fieldName == "employeeCode") {
-                    $(input).val(self.getLastedEmployeeCode);
-                }
-                else {
-                    $(input).val(objectDetail[fieldName]);
-                }
-            })
-
-            
-        }).fail(function (response) {
-
-        })
-    } else {
-        this.onHideDialog();
-        this.onShowDialogReminder();
-    }
-    
-}
-
-
-    /**
-    * Lấy Id mới nhất của nhân viên
-    * Created by: LTPThao (21/10/2020)
-    * */
-getLastedEmployeeCode() {
-    this.lastedCode = 0;
-    try {
+    btnDuplicateOnClick() {
         var self = this;
-        $.ajax({
-            url: "/api/employees",
-            method: "GET",
-            data: "",
-            contentType: "application/json",
-            dataType: "",
-            async: false,
-        }).done(function (employee) {
-            self.lastedCode = employee[employee.length - 1]["employeeCode"];
-            self.lastedCode = self.lastedCode.slice(0, 4) + (parseInt(self.lastedCode.slice(4)) + 1);
-            $('#txtEmployeeCode').val($('#txtEmployeeCode').val() + self.lastedCode);
-        })
-        return self.lastedCode;
-    } catch (e) {
+        var trSelected = $('#tbListData tbody tr.row-selected');
+        
+        var id = 0;
+        if (trSelected.length > 0) {
+            // Hiển thị dialog chi tiết
+            id = self.getRecordIdSelected();
+            $.ajax({
+                url: "/api/employees/" + id,
+                method: "GET",
+                data: "",
+                dataType: "json",
+                contentType: "application/json",
+                async: false
+            }).done(function (employee) {
+
+                //response['employeeCode'] = self.lastedCode;
+                self.onShowDialog();
+                var objectDetail = employee;
+                var inputs = $("input[fieldName], select[fieldName]");
+                $.each(inputs, function (index, input) {
+                    var fieldName = $(input).attr('fieldName');
+                    if (fieldName == "dateOfBirth" || fieldName == 'identityDate' || fieldName == 'joinDate' || fieldName == 'identityNumber') {
+                        $(input).val(commonJS.formatDateISO(objectDetail[fieldName]));
+                    }
+                    else if (fieldName == "employeeCode") {
+                        $(input).val(self.getLastedEmployeeCode);
+                    }
+                    else {
+                        $(input).val(objectDetail[fieldName]);
+                    }
+                })
+                self.getLastedEmployeeCode();
+
+            }).fail(function (response) {
+
+            })
+        } else {
+            this.onHideDialog();
+            this.onShowDialogReminder();
+        }
 
     }
-}
-//#endregion "DuplicateEmployee"
+
+
+
+    //#endregion "DuplicateEmployee"
+
+    //Khi nhấn button Next thì chuyển tới trang tiếp theo
+    btnNextOnClick() {
+        var currentPageNumber = $('#numPage').val();
+        if (currentPageNumber) {
+            $('#numPage').val(parseInt(currentPageNumber) + 1);
+        }
+    }
 }
 
 

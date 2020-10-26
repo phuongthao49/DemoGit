@@ -14,5 +14,13 @@ namespace MISA.DataAccess.Interfaces
         /// <returns>true: có, false:Không</returns>
         /// Created by: LTPThao
         bool CheckEmployeeByCode(string employeeCode);
+
+
+        /// <summary>
+        /// Lấy mã nhân viên mới tự sinh
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy: LPThao
+        string GetNewEmployeeCode();
     }
 }

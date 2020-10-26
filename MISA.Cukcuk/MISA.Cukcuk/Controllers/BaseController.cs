@@ -20,11 +20,14 @@ namespace MISA.CukCuk.Controllers
     {
         IBaseService<T> _baseService;
 
+        #region "contructor"
         public BaseController(IBaseService<T> baseService)
         {
             _baseService = baseService;
         }
+        #endregion "contructor"
 
+        #region "method"
         /// <summary>
         /// Lấy danh sách entity
         /// </summary>
@@ -105,5 +108,6 @@ namespace MISA.CukCuk.Controllers
             else
                 return BadRequest();
         }
+        #endregion "method"
     }
 }

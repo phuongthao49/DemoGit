@@ -6,6 +6,7 @@ namespace MISA.DataAccess.Interfaces
 {
     public interface IBaseRepository<T>
     {
+        #region "method"
         /// <summary>
         /// Lấy danh sách bản ghi
         /// </summary>
@@ -44,5 +45,6 @@ namespace MISA.DataAccess.Interfaces
         /// <returns></returns>
         /// Created by: LTPThao (18/10/2020)
         int Delete(Guid id);
+        #endregion "method"
     }
 }

@@ -20,5 +20,11 @@ namespace MISA.Bussiness.Service
         {
             return _employeeRepository.CheckEmployeeByCode(employeeCode);
         }
+
+        public string GetNewEmployeeCode()
+        {
+
+            return _employeeRepository.GetNewEmployeeCode();
+        }
     }
 }

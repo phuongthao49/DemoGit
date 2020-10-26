@@ -18,6 +18,9 @@ namespace MISA.DataAccess.Repository
             throw new NotImplementedException();
         }
 
-        
+        public string GetNewEmployeeCode()
+        {
+            return _databaseContext.ExecuteScalar("Proc_GetNewEmployeeCode").ToString();
+        }
     }
 }
